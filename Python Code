@@ -1,0 +1,55 @@
+def battle(pa,eh):
+    return (eh-pa)
+def attack(ph,ea):
+    return (ph-ea)
+def heal(ph):
+    return (ph+30)
+def encounter():
+    p=[]
+    e=[[1,45,3],[2,30,4],[3,35,6]]
+    t=random.randint(0,2)
+    p.append(e[t])
+    while l1[0][1]>=0 and p[0][1]>=0:
+        
+        if l1[0][1]<=15:
+            print('*Consider healing* ')
+        k=int(input('Choose an Option:\n1-Attack\n2-Heal\n'))
+        
+        if k==1:
+            p[0][1]=battle(l1[0][2],p[0][1]) 
+            l1[0][1]=attack(l1[0][1],p[0][2])
+            print(l1[0][1],'Health remaining ')
+            print('Enemy health:',p[0][1])
+        if k==2:
+            l1[0][1]=heal(l1[0][1])
+            l1[0][1]=attack(l1[0][1],p[0][2])
+            print('Health recovered',l1[0][1])
+    return l1[0][1]
+    return p[0][1]
+import random
+print('You are an astronaut, who just had a crash landing on an unknown planet. \nIt is a relief that you were not badly hurt.')
+print('Player Options:\n1-Trident\n2-Armstrong\n3-Daisy')
+i=int(input('Choose your player (Enter from 1-3): '))
+l=[[],['Trident',60,8],['Armstrong',55,5],['Daisy',60,7]]
+if str(i).isdigit():
+    l1=[]
+    print(l[i][0],'-',l[i][1],'Health    ',l[i][2],'Attack power')
+    l1.append(l[i])
+else:
+    print('end')
+print()
+print(l1[0][0],'soon finds out that the escape shuttle has flown away by the explosion.You head to that direction')
+print('You come across monsterous entities. Fight for our lives.')
+y=encounter()
+l1[0][1]=y
+s=input('A job well done.\nAlong the path you come across a sparkling jewel.\nWill you take it or leave it be....\n(Enter y or n): ')
+if s.lower()=='y':
+    print("Ohh no, shouldn't have fell for that")
+    y=encounter()
+    l1[0][1]=y
+else:
+    print('Will not fall for that!!!')
+print(l1[0][0],'has finally reached the shuttle\nBefore you could think of anything you are attacked.!')
+y=encounter()
+l1[0][1]=y
+print('You jump into the shuttle, re-boot all the systems and make it out alive\nPlayer Stats:',l1[0][0],'    ',l1[0][1],'Health remaining')
